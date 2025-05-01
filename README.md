@@ -9,8 +9,12 @@ pip install docling
 ```
 
 ----
-**bold line** \n
+
+**bold line** 
+
 *italics*
+
 * point 1
 * point 2
     * point 3
+         *new point
