@@ -22,4 +22,5 @@ pip install docling
 [ new link ](https://rudygaur.github.io/gh-page/)
 
 | new table | second column |
+| -------- | -------- |
 | value 1 | value 2 |
