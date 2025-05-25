@@ -3,475 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Resume</title>
+    <title>Rudransh Gaur - Resume</title>
     <style>
-        /* Global Styles */
-        :root {
-            --primary-color: #0a66c2;
-            --secondary-color: #f5f5f5;
-            --text-color: #333;
-            --heading-color: #222;
-            --border-color: #ddd;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
-            color: var(--text-color);
-            background-color: #f9f9f9;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-            background-color: white;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Header Styles */
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-        }
-        
-        .profile-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid white;
-            background-color: #e9e9e9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        
-        .profile-img-placeholder {
-            font-size: 60px;
-            color: #aaa;
-        }
-        
-        h1 {
-            margin-top: 20px;
-            font-size: 2.5rem;
-            font-weight: bold;
-        }
-        
-        .title {
-            font-size: 1.2rem;
-            margin-top: 5px;
-            opacity: 0.9;
-        }
-        
-        .contact-info {
-            margin-top: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .contact-icon {
-            font-size: 18px;
-        }
-        
-        /* Main Content Styles */
-        main {
-            padding: 40px 20px;
-        }
-        
-        section {
-            margin-bottom: 40px;
-        }
-        
-        .section-title {
-            font-size: 1.5rem;
-            color: var(--heading-color);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--primary-color);
-        }
-        
-        /* About Section */
-        .about {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 40px;
-        }
-        
-        /* Experience & Education Sections */
-        .timeline-item {
-            margin-bottom: 30px;
-            position: relative;
-            padding-left: 20px;
-            border-left: 2px solid var(--primary-color);
-        }
-        
-        .timeline-title {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-        
-        .job-title, .degree {
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: var(--heading-color);
-        }
-        
-        .company, .institution {
-            font-weight: 500;
-        }
-        
-        .period {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .description {
-            margin-top: 10px;
-        }
-        
-        /* Skills Section */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .skill-item {
-            background-color: var(--secondary-color);
-            border-radius: 20px;
-            padding: 8px 15px;
-            font-size: 0.9rem;
-        }
-        
-        /* Projects Section */
-        .projects-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        
-        .project-card {
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .card-body {
-            padding: 15px;
-        }
-        
-        .project-title {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: var(--heading-color);
-        }
-        
-        .project-tools {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-top: 10px;
-        }
-        
-        .tool-tag {
-            background-color: var(--primary-color);
-            color: white;
-            font-size: 0.8rem;
-            padding: 3px 8px;
-            border-radius: 3px;
-        }
-        
-        /* Footer Styles */
-        footer {
-            background-color: var(--heading-color);
-            color: white;
-            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            line-height: 1.3;
+            color: #000;
+            background: white;
             padding: 20px;
-            font-size: 0.9rem;
         }
-        
-        /* Responsive Styles */
+
+        .resume-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+            padding: 0.5in;
+            min-height: 11in;
+        }
+
+        .header {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .job-title {
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .address {
+            font-size: 11px;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .contact {
+            font-size: 11px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-top: 15px;
+        }
+
+        .left-column {
+            padding-right: 15px;
+        }
+
+        .right-column {
+            padding-left: 15px;
+        }
+
+        .section-title {
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            margin-top: 15px;
+        }
+
+        .section-title:first-child {
+            margin-top: 0;
+        }
+
+        .experience-item {
+            margin-bottom: 12px;
+        }
+
+        .company-info {
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .date-range {
+            font-size: 10px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .job-description {
+            text-align: justify;
+            line-height: 1.4;
+        }
+
+        .education-item {
+            margin-bottom: 8px;
+        }
+
+        .degree-info {
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .score {
+            font-size: 11px;
+        }
+
+        .projects-content {
+            text-align: justify;
+            line-height: 1.4;
+        }
+
+        .skills-content {
+            text-align: justify;
+            line-height: 1.4;
+        }
+
+        .achievements-content {
+            text-align: justify;
+            line-height: 1.4;
+        }
+
+        .languages-content {
+            line-height: 1.4;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                font-size: 11px;
+            }
+            
+            .resume-container {
+                padding: 0.5in;
+                max-width: none;
+                width: 8.5in;
+                min-height: 11in;
+            }
+        }
+
         @media (max-width: 768px) {
-            .profile-img {
-                width: 120px;
-                height: 120px;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .projects-container {
+            .main-content {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
             
-            .timeline-title {
-                flex-direction: column;
-                gap: 5px;
+            .left-column,
+            .right-column {
+                padding: 0;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="profile-container">
-                <div class="profile-img">
-                    <div class="profile-img-placeholder">JD</div>
+    <div class="resume-container">
+        <div class="header">
+            <div class="name">Rudransh Gaur</div>
+            <div class="job-title">Senior Software Analyst at Accenture</div>
+            <div class="address">
+                F-238, Raj Nagar-II<br>
+                Palam Colony, New Delhi-<br>
+                110077
+            </div>
+            <div class="contact">
+                (+91) 8377946215<br>
+                rudygaur@gmail.com
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="left-column">
+                <div class="section-title">EXPERIENCE</div>
+                
+                <div class="experience-item">
+                    <div class="company-info">Accenture, Pune, India — Senior Software Analyst</div>
+                    <div class="date-range">JANUARY 2021 - PRESENT</div>
+                    <div class="job-description">
+                        Enhancing and supporting critical low latency application in production for a major client in the Health & Public Service domain in USA and promoted to the position of Senior software analyst from Jan, 2022.
+                    </div>
                 </div>
-                <h1>Jane Doe</h1>
-                <p class="title">Senior Software Developer</p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <span class="contact-icon">📧</span>
-                        <span>jane.doe@example.com</span>
+
+                <div class="experience-item">
+                    <div class="company-info">Accenture, Monterrey, Mexico — Software Analyst</div>
+                    <div class="date-range">JANUARY 2020 - JANUARY 2021</div>
+                    <div class="job-description">
+                        Development of the app, as well as coordination among different teams in Mexico, New York and India, enabling efficient workflows. Facilitated better communications across teams during UAT and embedded numerous change requests into the app under very tight deadlines. Sole POC for PDM for maintaining data sanity & integrity.
                     </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">📱</span>
-                        <span>(555) 123-4567</span>
+                </div>
+
+                <div class="experience-item">
+                    <div class="company-info">Accenture, Pune, India — Assistant Software Engineer</div>
+                    <div class="date-range">SEPTEMBER 2018 - DECEMBER 2020</div>
+                    <div class="job-description">
+                        Built major functionalities of a time constrained and low latency application from scratch over eight builds with adherence to best coding practices, played a crucial role at integration and user acceptance testing, modeled new functional requirements of the client into technical solutions.
                     </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">📍</span>
-                        <span>San Francisco, CA</span>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">🔗</span>
-                        <span>linkedin.com/in/janedoe</span>
-                    </div>
+                </div>
+
+                <div class="section-title">EDUCATION</div>
+                
+                <div class="education-item">
+                    <div class="degree-info">Maharaja Surajmal Institute of Technology, GGSIPU, Delhi — B.Tech. (ECE) 2014 - 2018</div>
+                    <div class="score">Scored 82.38 %</div>
+                </div>
+
+                <div class="education-item">
+                    <div class="degree-info">Delhi Jain Public School, Delhi — XII, CBSE 2013 - 2014</div>
+                    <div class="score">Scored 89.8%</div>
+                </div>
+
+                <div class="section-title">PROJECTS</div>
+                <div class="projects-content">
+                    Graduation - Home Automation System using DTMF and GSM & Voice Automation Systems using Arduino uno
                 </div>
             </div>
-        </header>
-        
-        <main>
-            <section class="about">
-                <h2 class="section-title">About Me</h2>
-                <p>Passionate and results-driven Software Developer with over 8 years of experience in designing and implementing innovative solutions. Skilled in full-stack development with expertise in modern web technologies. Committed to writing clean, maintainable code and delivering high-quality software that meets business objectives.</p>
-            </section>
-            
-            <section class="experience">
-                <h2 class="section-title">Work Experience</h2>
-                
-                <div class="timeline-item">
-                    <div class="timeline-title">
-                        <div>
-                            <div class="job-title">Senior Software Developer</div>
-                            <div class="company">Tech Innovations Inc.</div>
-                        </div>
-                        <div class="period">Jan 2021 - Present</div>
-                    </div>
-                    <div class="description">
-                        <ul>
-                            <li>Led the development of a cloud-based SaaS platform that increased customer retention by 30%.</li>
-                            <li>Implemented CI/CD pipelines that reduced deployment time by 40% and improved code quality.</li>
-                            <li>Mentored junior developers and conducted code reviews to ensure best practices.</li>
-                            <li>Collaborated with cross-functional teams to deliver features aligned with business goals.</li>
-                        </ul>
-                    </div>
+
+            <div class="right-column">
+                <div class="section-title">INHERENT SKILLS</div>
+                <div class="skills-content">
+                    Problem solving analytical skills, good communication skills, leadership abilities, team player
                 </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-title">
-                        <div>
-                            <div class="job-title">Software Developer</div>
-                            <div class="company">Digital Solutions Ltd.</div>
-                        </div>
-                        <div class="period">May 2017 - Dec 2020</div>
-                    </div>
-                    <div class="description">
-                        <ul>
-                            <li>Developed RESTful APIs and microservices using Node.js and Express.</li>
-                            <li>Built responsive web applications using React and Redux.</li>
-                            <li>Implemented automated testing strategies that improved code coverage by 25%.</li>
-                            <li>Optimized database queries that enhanced application performance by 35%.</li>
-                        </ul>
-                    </div>
+
+                <div class="section-title">ACQUIRED SKILLS</div>
+                <div class="skills-content">
+                    SQL, PL/SQL, RDBMS, SQL performance tuning, Python, Pandas, git, Jira, CI/CD devOps (jenkins), Excel, SDLC methodologies (agile, scrum, waterfall)<br><br>
+                    Statistics, Bibliometric analysis, data analytics and visualization, POWER BI, Data warehouse ETL ODI
                 </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-title">
-                        <div>
-                            <div class="job-title">Junior Developer</div>
-                            <div class="company">WebTech Start-up</div>
-                        </div>
-                        <div class="period">Jun 2015 - Apr 2017</div>
-                    </div>
-                    <div class="description">
-                        <ul>
-                            <li>Contributed to front-end development using HTML, CSS, and JavaScript.</li>
-                            <li>Assisted in database design and implementation using MongoDB.</li>
-                            <li>Participated in agile development processes and daily stand-ups.</li>
-                            <li>Collaborated with UI/UX designers to implement responsive interfaces.</li>
-                        </ul>
-                    </div>
+
+                <div class="section-title">ACHIEVEMENTS & INTERESTS</div>
+                <div class="achievements-content">
+                    With only 1.4 years of experience and merely an ASE, I was chosen from a team of 50 employees for a nearshore opportunity due to holistic knowledge of the project.<br><br>
+                    Solved 400+ defects and 100+ change requests with minimal error.<br><br>
+                    Letter of appreciation from the HRD ministry for scoring 100 marks in Maths at Sr. Secondary.<br><br>
+                    Photography, Cycling, YouTube Streaming on new technologies
                 </div>
-            </section>
-            
-            <section class="education">
-                <h2 class="section-title">Education</h2>
-                
-                <div class="timeline-item">
-                    <div class="timeline-title">
-                        <div>
-                            <div class="degree">Master of Science in Computer Science</div>
-                            <div class="institution">Stanford University</div>
-                        </div>
-                        <div class="period">2013 - 2015</div>
-                    </div>
-                    <div class="description">
-                        <p>Specialized in Software Engineering and Data Structures. Completed thesis on Optimization Algorithms for Cloud Computing.</p>
-                    </div>
+
+                <div class="section-title">LANGUAGES</div>
+                <div class="languages-content">
+                    English, Hindi
                 </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-title">
-                        <div>
-                            <div class="degree">Bachelor of Science in Computer Science</div>
-                            <div class="institution">University of California, Berkeley</div>
-                        </div>
-                        <div class="period">2009 - 2013</div>
-                    </div>
-                    <div class="description">
-                        <p>Graduated with honors. Key courses included Data Structures, Algorithms, Database Systems, and Web Development.</p>
-                    </div>
-                </div>
-            </section>
-            
-            <section class="skills">
-                <h2 class="section-title">Skills</h2>
-                
-                <div class="skills-container">
-                    <div class="skill-item">JavaScript</div>
-                    <div class="skill-item">TypeScript</div>
-                    <div class="skill-item">React</div>
-                    <div class="skill-item">Vue.js</div>
-                    <div class="skill-item">Node.js</div>
-                    <div class="skill-item">Express</div>
-                    <div class="skill-item">MongoDB</div>
-                    <div class="skill-item">PostgreSQL</div>
-                    <div class="skill-item">GraphQL</div>
-                    <div class="skill-item">RESTful APIs</div>
-                    <div class="skill-item">Docker</div>
-                    <div class="skill-item">Kubernetes</div>
-                    <div class="skill-item">AWS</div>
-                    <div class="skill-item">Git</div>
-                    <div class="skill-item">CI/CD</div>
-                    <div class="skill-item">Test-Driven Development</div>
-                    <div class="skill-item">Agile Methodologies</div>
-                    <div class="skill-item">Python</div>
-                </div>
-            </section>
-            
-            <section class="projects">
-                <h2 class="section-title">Projects</h2>
-                
-                <div class="projects-container">
-                    <div class="project-card">
-                        <div class="card-body">
-                            <h3 class="project-title">E-commerce Platform</h3>
-                            <p>Developed a scalable e-commerce solution with inventory management and payment processing integration.</p>
-                            <div class="project-tools">
-                                <span class="tool-tag">React</span>
-                                <span class="tool-tag">Node.js</span>
-                                <span class="tool-tag">MongoDB</span>
-                                <span class="tool-tag">Stripe API</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card">
-                        <div class="card-body">
-                            <h3 class="project-title">Task Management System</h3>
-                            <p>Built a collaborative task management application with real-time updates and team collaboration features.</p>
-                            <div class="project-tools">
-                                <span class="tool-tag">Vue.js</span>
-                                <span class="tool-tag">Express</span>
-                                <span class="tool-tag">Socket.io</span>
-                                <span class="tool-tag">PostgreSQL</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card">
-                        <div class="card-body">
-                            <h3 class="project-title">Health Monitoring App</h3>
-                            <p>Created a mobile-responsive health tracking application with data visualization and personalized insights.</p>
-                            <div class="project-tools">
-                                <span class="tool-tag">React Native</span>
-                                <span class="tool-tag">GraphQL</span>
-                                <span class="tool-tag">D3.js</span>
-                                <span class="tool-tag">AWS Lambda</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section class="achievements">
-                <h2 class="section-title">Achievements & Certifications</h2>
-                
-                <div class="timeline-item">
-                    <div class="timeline-title">
-                        <div>
-                            <div class="job-title">AWS Certified Solutions Architect</div>
-                        </div>
-                        <div class="period">2023</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-title">
-                        <div>
-                            <div class="job-title">Google Cloud Professional Developer</div>
-                        </div>
-                        <div class="period">2022</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-title">
-                        <div>
-                            <div class="job-title">Best Paper Award - International Conference on Software Engineering</div>
-                        </div>
-                        <div class="period">2020</div>
-                    </div>
-                </div>
-            </section>
-        </main>
-        
-        <footer>
-            <p>&copy; 2025 Jane Doe | Last Updated: May 2025</p>
-        </footer>
+            </div>
+        </div>
     </div>
 </body>
 </html>
