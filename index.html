@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rudransh Gaur - Resume</title>
+    <title>Rudransh Gaur - Data Engineer Resume</title>
     <style>
         * {
             margin: 0;
@@ -14,175 +14,186 @@
         body {
             font-family: Arial, sans-serif;
             font-size: 11px;
-            line-height: 1.3;
-            color: #222;
-            background: #f3f5f7;
-            padding: 20px;
+            line-height: 1.4;
+            color: #1a1a1a;
+            background: #f0f2f5;
+            padding: 24px;
         }
 
         .resume-container {
             max-width: 8.5in;
             margin: 0 auto;
             background: #ffffff;
-            padding: 0.6in;
+            padding: 0.55in 0.65in;
             min-height: 11in;
-            border-radius: 6px;
-            border: 1px solid #d0d4da;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            border-radius: 4px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.09);
         }
 
+        /* ── HEADER ─────────────────────────────────────────── */
         .header {
-            text-align: left;
-            margin-bottom: 18px;
+            margin-bottom: 14px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #c0c4cc;
+            border-bottom: 2px solid #1a3a6b;
         }
 
         .name {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 700;
-            letter-spacing: 0.6px;
+            letter-spacing: 0.4px;
+            color: #0d1f3c;
             margin-bottom: 3px;
         }
 
         .job-title {
             font-size: 13px;
             font-weight: 600;
-            color: #555;
-            margin-bottom: 8px;
+            color: #1a3a6b;
+            margin-bottom: 6px;
         }
 
-        .address {
-            font-size: 11px;
-            line-height: 1.3;
-            margin-bottom: 4px;
-            color: #555;
+        .contact-line {
+            font-size: 10.5px;
+            color: #444;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
         }
 
-        .contact {
-            font-size: 11px;
-            color: #333;
+        .contact-line a {
+            color: #1a3a6b;
+            text-decoration: none;
         }
 
-        .main-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 26px;
-            margin-top: 18px;
+        .contact-line a:hover {
+            text-decoration: underline;
         }
 
-        .left-column {
-            padding-right: 18px;
-            border-right: 1px solid #e1e4ea;
-        }
-
-        .right-column {
-            padding-left: 18px;
-        }
-
+        /* ── SECTION ─────────────────────────────────────────── */
         .section {
-            padding: 10px 0 6px;
-            border-bottom: 1px solid #e2e5ec;
-        }
-
-        .section:last-of-type {
-            border-bottom: none;
+            margin-bottom: 14px;
         }
 
         .section-title {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
-            margin-bottom: 8px;
-            position: relative;
-            letter-spacing: 0.8px;
-            color: #333;
+            letter-spacing: 1px;
+            color: #0d1f3c;
+            border-bottom: 1.5px solid #1a3a6b;
+            padding-bottom: 3px;
+            margin-bottom: 9px;
         }
 
-        .section-title::after {
-            content: "";
-            display: block;
-            width: 42px;
-            height: 2px;
-            background: #4a6bbd;
-            margin-top: 3px;
+        /* ── EXPERIENCE ──────────────────────────────────────── */
+        .exp-item {
+            margin-bottom: 11px;
         }
 
-        .section-title:first-child {
-            margin-top: 0;
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1px;
         }
 
-        .experience-item {
-            margin-bottom: 10px;
-            padding: 6px 8px;
-            border-left: 2px solid #4a6bbd;
-            border-radius: 3px;
-            background: #f7f9fc;
+        .exp-company {
+            font-weight: 700;
+            font-size: 11.5px;
+            color: #0d1f3c;
         }
 
-        .company-info {
+        .exp-dates {
+            font-size: 10px;
+            color: #555;
+            white-space: nowrap;
+            font-style: italic;
+        }
+
+        .exp-role {
+            font-size: 11px;
             font-weight: 600;
-            margin-bottom: 2px;
+            color: #1a3a6b;
+            margin-bottom: 5px;
+        }
+
+        .exp-bullets {
+            padding-left: 14px;
+            margin: 0;
+        }
+
+        .exp-bullets li {
+            margin-bottom: 3px;
+            line-height: 1.45;
             color: #222;
         }
 
-        .date-range {
-            font-size: 10px;
-            text-transform: uppercase;
-            margin-bottom: 4px;
-            color: #666;
-        }
-
-        .job-description {
-            text-align: justify;
-            line-height: 1.4;
-        }
-
-        .education-item {
-            margin-bottom: 7px;
-            padding: 4px 6px;
-            border-left: 2px solid #4a6bbd;
-            border-radius: 3px;
-            background: #f9fafc;
-        }
-
-        .degree-info {
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .score {
+        /* ── SKILLS ──────────────────────────────────────────── */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 4px 10px;
             font-size: 11px;
+        }
+
+        .skill-label {
+            font-weight: 700;
+            color: #0d1f3c;
+            white-space: nowrap;
+        }
+
+        .skill-value {
+            color: #222;
+        }
+
+        /* ── EDUCATION ───────────────────────────────────────── */
+        .edu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+
+        .edu-left .edu-degree {
+            font-weight: 700;
+            font-size: 11px;
+            color: #0d1f3c;
+        }
+
+        .edu-left .edu-institution {
+            font-size: 10.5px;
             color: #444;
         }
 
-        .projects-content,
-        .skills-content,
-        .achievements-content {
-            text-align: justify;
-            line-height: 1.4;
+        .edu-right {
+            text-align: right;
+            font-size: 10px;
+            color: #555;
+            font-style: italic;
+            white-space: nowrap;
         }
 
-        .skills-content,
-        .achievements-content,
-        .languages-content {
-            font-size: 11px;
-            color: #333;
+        /* ── ACHIEVEMENTS ────────────────────────────────────── */
+        .ach-list {
+            padding-left: 14px;
+            margin: 0;
         }
 
-        .languages-content {
-            line-height: 1.4;
+        .ach-list li {
+            margin-bottom: 3px;
+            line-height: 1.45;
+            color: #222;
         }
 
+        /* ── PRINT ───────────────────────────────────────────── */
         @media print {
             body {
                 padding: 0;
-                font-size: 11px;
                 background: #ffffff;
+                font-size: 11px;
             }
-            
             .resume-container {
-                padding: 0.5in;
+                padding: 0.5in 0.6in;
                 max-width: none;
                 width: 8.5in;
                 min-height: 11in;
@@ -191,114 +202,147 @@
             }
         }
 
-        @media (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .left-column {
-                padding-right: 0;
-                border-right: none;
-                border-bottom: 1px solid #e1e4ea;
-                padding-bottom: 12px;
-                margin-bottom: 8px;
-            }
-
-            .right-column {
-                padding-left: 0;
-            }
+        @media (max-width: 640px) {
+            body { padding: 10px; }
+            .exp-header { flex-direction: column; }
+            .edu-item { flex-direction: column; }
+            .edu-right { text-align: left; margin-top: 2px; }
         }
     </style>
 </head>
 <body>
-    <div class="resume-container">
-        <div class="header">
-            <div class="name">Rudransh Gaur</div>
-            <div class="job-title">Senior Software Analyst at Accenture</div>
-            <div class="address">
-                F-238, Raj Nagar-II<br>
-                Palam Colony, New Delhi-<br>
-                110077
-            </div>
-            <div class="contact">
-                (+91) 8377946215<br>
-                rudygaur@gmail.com
-            </div>
-        </div>
+<div class="resume-container">
 
-        <div class="main-content">
-            <div class="left-column">
-                <div class="section-title">EXPERIENCE</div>
-                
-                <div class="experience-item">
-                    <div class="company-info">Accenture, Pune, India — Senior Software Analyst</div>
-                    <div class="date-range">JANUARY 2021 - PRESENT</div>
-                    <div class="job-description">
-                        Enhancing and supporting critical low latency application in production for a major client in the Health & Public Service domain in USA and promoted to the position of Senior software analyst from Jan, 2022.
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="company-info">Accenture, Monterrey, Mexico — Software Analyst</div>
-                    <div class="date-range">JANUARY 2020 - JANUARY 2021</div>
-                    <div class="job-description">
-                        Development of the app, as well as coordination among different teams in Mexico, New York and India, enabling efficient workflows. Facilitated better communications across teams during UAT and embedded numerous change requests into the app under very tight deadlines. Sole POC for PDM for maintaining data sanity & integrity.
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="company-info">Accenture, Pune, India — Assistant Software Engineer</div>
-                    <div class="date-range">SEPTEMBER 2018 - DECEMBER 2020</div>
-                    <div class="job-description">
-                        Built major functionalities of a time constrained and low latency application from scratch over eight builds with adherence to best coding practices, played a crucial role at integration and user acceptance testing, modeled new functional requirements of the client into technical solutions.
-                    </div>
-                </div>
-
-                <div class="section-title">EDUCATION</div>
-                
-                <div class="education-item">
-                    <div class="degree-info">Maharaja Surajmal Institute of Technology, GGSIPU, Delhi — B.Tech. (ECE) 2014 - 2018</div>
-                    <div class="score">Scored 82.38 %</div>
-                </div>
-
-                <div class="education-item">
-                    <div class="degree-info">Delhi Jain Public School, Delhi — XII, CBSE 2013 - 2014</div>
-                    <div class="score">Scored 89.8%</div>
-                </div>
-
-                <div class="section-title">PROJECTS</div>
-                <div class="projects-content">
-                    Graduation - Home Automation System using DTMF and GSM & Voice Automation Systems using Arduino uno
-                </div>
-            </div>
-
-            <div class="right-column">
-                <div class="section-title">INHERENT SKILLS</div>
-                <div class="skills-content">
-                    Problem solving analytical skills, good communication skills, leadership abilities, team player
-                </div>
-
-                <div class="section-title">ACQUIRED SKILLS</div>
-                <div class="skills-content">
-                    SQL, PL/SQL, RDBMS, SQL performance tuning, Python, Pandas, git, Jira, CI/CD devOps (jenkins), Excel, SDLC methodologies (agile, scrum, waterfall)<br><br>
-                    Statistics, Bibliometric analysis, data analytics and visualization, POWER BI, Data warehouse ETL ODI
-                </div>
-
-                <div class="section-title">ACHIEVEMENTS & INTERESTS</div>
-                <div class="achievements-content">
-                    With only 1.4 years of experience and merely an ASE, I was chosen from a team of 50 employees for a nearshore opportunity due to holistic knowledge of the project.<br><br>
-                    Solved 400+ defects and 100+ change requests with minimal error.<br><br>
-                    Letter of appreciation from the HRD ministry for scoring 100 marks in Maths at Sr. Secondary.<br><br>
-                    Photography, Cycling, YouTube Streaming on new technologies
-                </div>
-
-                <div class="section-title">LANGUAGES</div>
-                <div class="languages-content">
-                    English, Hindi
-                </div>
-            </div>
+    <!-- ════════════ HEADER ════════════ -->
+    <div class="header">
+        <div class="name">Rudransh Gaur</div>
+        <div class="job-title">Data Engineer</div>
+        <div class="contact-line">
+            <span>New Delhi, India</span>
+            <span>(+91) 8377946215</span>
+            <a href="mailto:rudygaur@gmail.com">rudygaur@gmail.com</a>
         </div>
     </div>
+
+    <!-- ════════════ EXPERIENCE ════════════ -->
+    <div class="section">
+        <div class="section-title">Experience</div>
+
+        <!-- Morgan Stanley -->
+        <div class="exp-item">
+            <div class="exp-header">
+                <span class="exp-company">Morgan Stanley</span>
+                <span class="exp-dates"><!-- UPDATE: e.g. Jan 2023 --> – Present</span>
+            </div>
+            <div class="exp-role">Data Engineer</div>
+            <ul class="exp-bullets">
+                <li>Designed and maintained production-grade batch and streaming data pipelines using <strong>PySpark</strong> and <strong>Apache Kafka</strong>, enabling high-throughput ingestion and transformation of financial datasets for downstream analytics and reporting.</li>
+                <li>Orchestrated complex multi-dependency workflows with <strong>Apache Airflow</strong>, standardising DAG development patterns and improving pipeline observability and failure recovery.</li>
+                <li>Collaborated with quantitative analysts and business stakeholders to translate data requirements into robust, scalable engineering solutions, reducing ad-hoc data requests through self-serve data products.</li>
+                <li>Implemented data quality checks and monitoring at pipeline checkpoints, ensuring data integrity and SLA adherence for mission-critical financial data.</li>
+                <li>Contributed to performance optimisation of Spark jobs through partitioning strategies, caching, and query plan analysis, improving job execution efficiency.</li>
+            </ul>
+        </div>
+
+        <!-- Accenture SSA -->
+        <div class="exp-item">
+            <div class="exp-header">
+                <span class="exp-company">Accenture — Pune, India</span>
+                <span class="exp-dates">Jan 2021 – <!-- UPDATE: end date --></span>
+            </div>
+            <div class="exp-role">Senior Software Analyst</div>
+            <ul class="exp-bullets">
+                <li>Promoted to Senior Software Analyst within 1 year; led production support and enhancement of a low-latency, mission-critical application serving a major US Health &amp; Public Service client.</li>
+                <li>Drove <strong>SQL and PL/SQL performance tuning</strong> initiatives, reducing query execution time for high-frequency database operations.</li>
+                <li>Resolved 400+ production defects and 100+ change requests with high quality and minimal error, maintaining system availability and data integrity.</li>
+                <li>Collaborated with client stakeholders and cross-functional teams using Agile/Scrum methodology, translating business requirements into technical solutions.</li>
+            </ul>
+        </div>
+
+        <!-- Accenture Mexico -->
+        <div class="exp-item">
+            <div class="exp-header">
+                <span class="exp-company">Accenture — Monterrey, Mexico (Nearshore)</span>
+                <span class="exp-dates">Jan 2020 – Jan 2021</span>
+            </div>
+            <div class="exp-role">Software Analyst</div>
+            <ul class="exp-bullets">
+                <li>Selected from a team of 50+ employees after just 1.4 years of tenure for an international nearshore assignment based on holistic project knowledge.</li>
+                <li>Served as sole Point of Contact for PDM (Product Data Management), owning data sanity and integrity across the application.</li>
+                <li>Coordinated cross-functional teams across Mexico, New York, and India during UAT cycles, embedding 100+ change requests under tight delivery deadlines.</li>
+            </ul>
+        </div>
+
+        <!-- Accenture ASE -->
+        <div class="exp-item">
+            <div class="exp-header">
+                <span class="exp-company">Accenture — Pune, India</span>
+                <span class="exp-dates">Sep 2018 – Dec 2020</span>
+            </div>
+            <div class="exp-role">Assistant Software Engineer</div>
+            <ul class="exp-bullets">
+                <li>Built core functionalities of a time-constrained, low-latency application from scratch across 8 release builds, adhering to best coding and SDLC practices.</li>
+                <li>Played a key role in integration testing and UAT, bridging client functional requirements and technical implementation.</li>
+                <li>Modelled new client requirements into technical specifications, contributing to rapid feature delivery across sprint cycles.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ════════════ SKILLS ════════════ -->
+    <div class="section">
+        <div class="section-title">Technical Skills</div>
+        <div class="skills-grid">
+            <span class="skill-label">Languages</span>
+            <span class="skill-value">Python, SQL, PL/SQL</span>
+
+            <span class="skill-label">Big Data</span>
+            <span class="skill-value">Apache Spark, PySpark, Apache Kafka, Batch &amp; Streaming Processing</span>
+
+            <span class="skill-label">Orchestration</span>
+            <span class="skill-value">Apache Airflow, CI/CD (Jenkins)</span>
+
+            <span class="skill-label">Databases</span>
+            <span class="skill-value">RDBMS, Oracle DB, SQL Performance Tuning, Data Warehousing, ETL/ELT (ODI)</span>
+
+            <span class="skill-label">Analytics &amp; BI</span>
+            <span class="skill-value">Pandas, Power BI, Data Visualization, Statistics, Bibliometric Analysis</span>
+
+            <span class="skill-label">Tools &amp; Methods</span>
+            <span class="skill-value">Git, Jira, Excel, Agile, Scrum, Waterfall, SDLC</span>
+        </div>
+    </div>
+
+    <!-- ════════════ EDUCATION ════════════ -->
+    <div class="section">
+        <div class="section-title">Education</div>
+
+        <div class="edu-item">
+            <div class="edu-left">
+                <div class="edu-degree">B.Tech. — Electronics &amp; Communication Engineering</div>
+                <div class="edu-institution">Maharaja Surajmal Institute of Technology, GGSIPU, Delhi</div>
+            </div>
+            <div class="edu-right">2014 – 2018<br>82.38%</div>
+        </div>
+
+        <div class="edu-item">
+            <div class="edu-left">
+                <div class="edu-degree">Senior Secondary (XII) — CBSE</div>
+                <div class="edu-institution">Delhi Jain Public School, Delhi</div>
+            </div>
+            <div class="edu-right">2013 – 2014<br>89.8%</div>
+        </div>
+    </div>
+
+    <!-- ════════════ ACHIEVEMENTS ════════════ -->
+    <div class="section">
+        <div class="section-title">Achievements</div>
+        <ul class="ach-list">
+            <li>Selected for a competitive international nearshore assignment in Mexico from a pool of 50+ Accenture employees after only 1.4 years of experience.</li>
+            <li>Resolved 400+ production defects and 100+ change requests across multi-year engagement with minimal re-open rate.</li>
+            <li>Received a Letter of Appreciation from the HRD Ministry for scoring 100/100 in Mathematics at Senior Secondary level.</li>
+        </ul>
+    </div>
+
+</div>
 </body>
 </html>
