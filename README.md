@@ -1,4 +1,4 @@
-# Soft Eligibility Check Documentation ANU
+# Soft Eligibility Check Documentation
 
 ## Overview
 
