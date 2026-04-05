@@ -12,8 +12,12 @@ app = Flask(__name__)
 JWT_SECRET = os.environ.get('JWT_SECRET', 'dev-secret-change-me')
 
 def get_database_url():
-    """Neon via Vercel uses POSTGRES_URL; local/manual setup uses DATABASE_URL."""
-    url = os.environ.get('DATABASE_URL') or os.environ.get('POSTGRES_URL') or os.environ.get('POSTGRES_PRISMA_URL', '')
+    """Try all known Neon/Vercel env var names for the database URL."""
+    url = (os.environ.get('DATABASE_URL')
+           or os.environ.get('POSTGRES_URL')
+           or os.environ.get('NEON_PS_DB_DATABASE_URL')
+           or os.environ.get('NEON_PS_DB_POSTGRES_URL')
+           or os.environ.get('POSTGRES_PRISMA_URL', ''))
     # Vercel Neon sets postgres:// but psycopg2 needs postgresql://
     if url.startswith('postgres://'):
         url = url.replace('postgres://', 'postgresql://', 1)
@@ -99,21 +103,6 @@ def add_cors(response):
 # ═══════════════════════════════════════════════════════════════════════
 #  SETUP ENDPOINT — creates tables (run once, then remove)
 # ═══════════════════════════════════════════════════════════════════════
-
-@app.route('/api/debug-env', methods=['GET'])
-def debug_env():
-    """Temporary: show which DB env vars are set (remove after debugging)."""
-    db_vars = {}
-    for key in sorted(os.environ.keys()):
-        lower = key.lower()
-        if 'postgres' in lower or 'database' in lower or 'neon' in lower or 'db' in lower or 'pg' in lower:
-            val = os.environ[key]
-            # Mask the password portion
-            if '://' in val:
-                db_vars[key] = val[:30] + '...[masked]'
-            else:
-                db_vars[key] = val[:20] + '...' if len(val) > 20 else val
-    return json_response({'found_vars': db_vars, 'resolved_url': get_database_url()[:30] + '...' if get_database_url() else 'EMPTY'})
 
 @app.route('/api/setup', methods=['GET'])
 def setup_db():
