@@ -1,0 +1,26 @@
+{
+  "rewrites": [
+    { "source": "/api/auth/register", "destination": "/api/auth/register" },
+    { "source": "/api/auth/login", "destination": "/api/auth/login" },
+    { "source": "/api/auth/me", "destination": "/api/auth/me" },
+    { "source": "/api/habits/stats", "destination": "/api/habits/stats" },
+    { "source": "/api/habits/log", "destination": "/api/habits/log" },
+    { "source": "/api/habits/update", "destination": "/api/habits/update" },
+    { "source": "/api/habits/delete", "destination": "/api/habits/delete" },
+    { "source": "/api/habits", "destination": "/api/habits/index" },
+    { "source": "/api/tasks/update", "destination": "/api/tasks/update" },
+    { "source": "/api/tasks/delete", "destination": "/api/tasks/delete" },
+    { "source": "/api/tasks", "destination": "/api/tasks/index" },
+    { "source": "/tracker", "destination": "/tracker/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET,POST,PUT,DELETE,OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type,Authorization" }
+      ]
+    }
+  ]
+}

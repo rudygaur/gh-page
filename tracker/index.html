@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit & Task Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- Auth View -->
+    <div id="auth-view">
+        <!-- Left: Hero Panel -->
+        <div class="auth-hero">
+            <div class="auth-hero-top">
+                <div class="hero-logo">
+                    <span class="hero-logo-icon">+</span>
+                    <span class="hero-logo-text">streakly</span>
+                </div>
+            </div>
+
+            <div class="auth-hero-content">
+                <h1 class="hero-heading">Small habits,<br><em>big life</em>.</h1>
+                <p class="hero-description">Track what matters. Build streaks that stick.<br>See yourself grow — one day at a time.</p>
+            </div>
+
+            <div class="hero-habits">
+                <div class="hero-habit-card">
+                    <span class="hero-habit-emoji">🧘</span>
+                    <div class="hero-habit-info">
+                        <span class="hero-habit-name">Meditation</span>
+                        <div class="hero-habit-bar"><div class="hero-habit-fill" style="width:100%"></div></div>
+                    </div>
+                    <span class="hero-habit-streak">21d streak</span>
+                </div>
+                <div class="hero-habit-card">
+                    <span class="hero-habit-emoji">📖</span>
+                    <div class="hero-habit-info">
+                        <span class="hero-habit-name">Read 20 min</span>
+                        <div class="hero-habit-bar"><div class="hero-habit-fill" style="width:67%"></div></div>
+                    </div>
+                    <span class="hero-habit-streak">14d streak</span>
+                </div>
+                <div class="hero-habit-card">
+                    <span class="hero-habit-emoji">🏋️</span>
+                    <div class="hero-habit-info">
+                        <span class="hero-habit-name">Exercise</span>
+                        <div class="hero-habit-bar"><div class="hero-habit-fill" style="width:43%"></div></div>
+                    </div>
+                    <span class="hero-habit-streak">9d streak</span>
+                </div>
+            </div>
+
+            <p class="hero-footer">Your data stays yours. No ads, ever.</p>
+        </div>
+
+        <!-- Right: Login Form -->
+        <div class="auth-container">
+            <h1 class="auth-title" id="auth-title">Welcome back</h1>
+            <p class="auth-subtitle" id="auth-subtitle">Sign in to your account to continue</p>
+
+            <form id="auth-form">
+                <label class="input-label" for="auth-username">Username</label>
+                <div class="input-group">
+                    <input type="text" id="auth-username" placeholder="you@example.com" autocomplete="username" required>
+                </div>
+
+                <label class="input-label" for="auth-password">Password</label>
+                <div class="input-group input-group-password">
+                    <input type="password" id="auth-password" placeholder="••••••••" autocomplete="current-password" required>
+                    <button type="button" class="password-toggle" id="password-toggle">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </button>
+                </div>
+
+                <button type="submit" id="auth-btn">
+                    <span id="auth-btn-text">Sign in</span>
+                </button>
+            </form>
+
+            <div class="auth-divider"><span>or</span></div>
+
+            <div class="auth-toggle-row">
+                <span id="toggle-label">Don't have an account?</span>
+                <a href="#" id="toggle-auth" class="auth-toggle-btn">Create one</a>
+            </div>
+            <p id="auth-error" class="auth-error"></p>
+        </div>
+    </div>
+
+    <!-- Dashboard View -->
+    <div id="dashboard-view" style="display:none">
+        <header>
+            <div class="greeting">
+                <h1 id="greeting-text"></h1>
+                <p id="greeting-date"></p>
+            </div>
+            <button id="logout-btn" class="logout-btn">Logout</button>
+        </header>
+
+        <!-- Score Cards -->
+        <div class="score-cards">
+            <div class="score-card">
+                <div class="score-ring" id="score-ring">
+                    <svg viewBox="0 0 36 36">
+                        <path class="ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        <path class="ring-fill" id="ring-fill" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        <text x="18" y="20.5" class="ring-text" id="ring-text">0%</text>
+                    </svg>
+                </div>
+                <div>
+                    <div class="score-label">Today's score</div>
+                    <div class="score-value" id="habits-count">0 / 0</div>
+                    <div class="score-sub">habits completed</div>
+                </div>
+            </div>
+            <div class="score-card">
+                <div class="streak-icon">🔥</div>
+                <div>
+                    <div class="score-value-lg" id="day-streak">0</div>
+                    <div class="score-sub">day streak</div>
+                </div>
+            </div>
+            <div class="score-card">
+                <div>
+                    <div class="score-value-lg" id="tasks-done">0 / 0</div>
+                    <div class="score-sub">tasks done</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Habits Section -->
+            <div class="section">
+                <div class="section-header">
+                    <h2>HABITS</h2>
+                    <button class="add-btn" id="add-habit-btn">+ add habit</button>
+                </div>
+                <div id="habits-grid" class="habits-grid"></div>
+            </div>
+
+            <!-- Tasks Section -->
+            <div class="section">
+                <div class="section-header">
+                    <h2>TASKS</h2>
+                </div>
+                <div id="tasks-list" class="tasks-list"></div>
+                <div class="add-task-row">
+                    <input type="text" id="new-task-input" placeholder="+ add task" class="add-task-input">
+                    <select id="new-task-priority" class="priority-select">
+                        <option value="medium">●</option>
+                        <option value="high">● High</option>
+                        <option value="low">● Low</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-value" id="weekly-avg">0%</div>
+                <div class="stat-label">weekly avg</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="best-day">—</div>
+                <div class="stat-label">strongest day</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="top-habit">—</div>
+                <div class="stat-label">top habit</div>
+            </div>
+        </div>
+
+        <!-- Weekly Chart -->
+        <div class="chart-container">
+            <h3>THIS WEEK AT A GLANCE</h3>
+            <canvas id="weekly-chart"></canvas>
+        </div>
+
+        <!-- Add Habit Modal -->
+        <div id="habit-modal" class="modal" style="display:none">
+            <div class="modal-content">
+                <h3>Add New Habit</h3>
+                <input type="text" id="habit-name-input" placeholder="Habit name" required>
+                <div class="emoji-picker">
+                    <span class="emoji-option" data-emoji="🧘">🧘</span>
+                    <span class="emoji-option" data-emoji="🏋️">🏋️</span>
+                    <span class="emoji-option" data-emoji="📖">📖</span>
+                    <span class="emoji-option" data-emoji="🚿">🚿</span>
+                    <span class="emoji-option" data-emoji="🥗">🥗</span>
+                    <span class="emoji-option" data-emoji="✍️">✍️</span>
+                    <span class="emoji-option" data-emoji="😴">😴</span>
+                    <span class="emoji-option" data-emoji="💧">💧</span>
+                    <span class="emoji-option" data-emoji="🏃">🏃</span>
+                    <span class="emoji-option" data-emoji="🎯">🎯</span>
+                    <span class="emoji-option" data-emoji="📵">📵</span>
+                    <span class="emoji-option" data-emoji="✅">✅</span>
+                </div>
+                <input type="hidden" id="habit-emoji-input" value="✅">
+                <div class="modal-actions">
+                    <button id="habit-cancel-btn" class="btn-secondary">Cancel</button>
+                    <button id="habit-save-btn" class="btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
