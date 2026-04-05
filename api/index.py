@@ -100,6 +100,21 @@ def add_cors(response):
 #  SETUP ENDPOINT — creates tables (run once, then remove)
 # ═══════════════════════════════════════════════════════════════════════
 
+@app.route('/api/debug-env', methods=['GET'])
+def debug_env():
+    """Temporary: show which DB env vars are set (remove after debugging)."""
+    db_vars = {}
+    for key in sorted(os.environ.keys()):
+        lower = key.lower()
+        if 'postgres' in lower or 'database' in lower or 'neon' in lower or 'db' in lower or 'pg' in lower:
+            val = os.environ[key]
+            # Mask the password portion
+            if '://' in val:
+                db_vars[key] = val[:30] + '...[masked]'
+            else:
+                db_vars[key] = val[:20] + '...' if len(val) > 20 else val
+    return json_response({'found_vars': db_vars, 'resolved_url': get_database_url()[:30] + '...' if get_database_url() else 'EMPTY'})
+
 @app.route('/api/setup', methods=['GET'])
 def setup_db():
     try:
