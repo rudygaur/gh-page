@@ -257,3 +257,21 @@ document.getElementById('habit-modal').addEventListener('click', (e) => {
         document.getElementById('habit-modal').style.display = 'none';
     }
 });
+
+// Auto-login if token exists (must be here, after loadDashboard is defined)
+if (getToken()) {
+    // Validate token is still good before showing dashboard
+    fetchWithAuth('/auth/me')
+        .then(resp => {
+            if (resp.ok) {
+                showDashboard();
+            } else {
+                clearToken();
+                showAuthView();
+            }
+        })
+        .catch(() => {
+            clearToken();
+            showAuthView();
+        });
+}

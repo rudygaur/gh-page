@@ -93,7 +93,4 @@ document.getElementById('password-toggle').addEventListener('click', () => {
     pw.type = pw.type === 'password' ? 'text' : 'password';
 });
 
-// Auto-login if token exists
-if (getToken()) {
-    showDashboard();
-}
+// Auto-login moved to app.js (must run after loadDashboard is defined)
