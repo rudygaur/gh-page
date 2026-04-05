@@ -11,10 +11,18 @@ app = Flask(__name__)
 # ─── Config ───────────────────────────────────────────────────────────
 JWT_SECRET = os.environ.get('JWT_SECRET', 'dev-secret-change-me')
 
+def get_database_url():
+    """Neon via Vercel uses POSTGRES_URL; local/manual setup uses DATABASE_URL."""
+    url = os.environ.get('DATABASE_URL') or os.environ.get('POSTGRES_URL') or os.environ.get('POSTGRES_PRISMA_URL', '')
+    # Vercel Neon sets postgres:// but psycopg2 needs postgresql://
+    if url.startswith('postgres://'):
+        url = url.replace('postgres://', 'postgresql://', 1)
+    return url
+
 
 # ─── Database helpers ─────────────────────────────────────────────────
 def get_connection():
-    return psycopg2.connect(os.environ['DATABASE_URL'], sslmode='require')
+    return psycopg2.connect(get_database_url(), sslmode='require')
 
 
 def query(sql, params=None, fetchone=False, fetchall=False, commit=False):
@@ -86,6 +94,58 @@ def add_cors(response):
     response.headers['Access-Control-Allow-Methods'] = 'GET,POST,PUT,DELETE,OPTIONS'
     response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
     return response
+
+
+# ═══════════════════════════════════════════════════════════════════════
+#  SETUP ENDPOINT — creates tables (run once, then remove)
+# ═══════════════════════════════════════════════════════════════════════
+
+@app.route('/api/setup', methods=['GET'])
+def setup_db():
+    try:
+        conn = get_connection()
+        cur = conn.cursor()
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS users (
+                id SERIAL PRIMARY KEY,
+                username VARCHAR(50) UNIQUE NOT NULL,
+                password_hash VARCHAR(255) NOT NULL,
+                created_at TIMESTAMP DEFAULT NOW()
+            );
+            CREATE TABLE IF NOT EXISTS habits (
+                id SERIAL PRIMARY KEY,
+                user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+                name VARCHAR(100) NOT NULL,
+                emoji VARCHAR(10) DEFAULT '✅',
+                is_active BOOLEAN DEFAULT TRUE,
+                created_at TIMESTAMP DEFAULT NOW()
+            );
+            CREATE TABLE IF NOT EXISTS tasks (
+                id SERIAL PRIMARY KEY,
+                user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+                title VARCHAR(255) NOT NULL,
+                priority VARCHAR(10) DEFAULT 'medium' CHECK (priority IN ('high', 'medium', 'low')),
+                is_done BOOLEAN DEFAULT FALSE,
+                due_date DATE,
+                created_at TIMESTAMP DEFAULT NOW()
+            );
+            CREATE TABLE IF NOT EXISTS habit_logs (
+                id SERIAL PRIMARY KEY,
+                habit_id INTEGER NOT NULL REFERENCES habits(id) ON DELETE CASCADE,
+                user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+                log_date DATE NOT NULL DEFAULT CURRENT_DATE,
+                created_at TIMESTAMP DEFAULT NOW(),
+                UNIQUE(habit_id, log_date)
+            );
+            CREATE INDEX IF NOT EXISTS idx_habit_logs_user_date ON habit_logs(user_id, log_date);
+            CREATE INDEX IF NOT EXISTS idx_tasks_user ON tasks(user_id);
+            CREATE INDEX IF NOT EXISTS idx_habits_user ON habits(user_id);
+        """)
+        conn.commit()
+        conn.close()
+        return json_response({'message': 'Database tables created successfully'})
+    except Exception as e:
+        return error_response(f'Setup failed: {str(e)}', 500)
 
 
 # ═══════════════════════════════════════════════════════════════════════
