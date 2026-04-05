@@ -12,8 +12,12 @@ app = Flask(__name__)
 JWT_SECRET = os.environ.get('JWT_SECRET', 'dev-secret-change-me')
 
 def get_database_url():
-    """Neon via Vercel uses POSTGRES_URL; local/manual setup uses DATABASE_URL."""
-    url = os.environ.get('DATABASE_URL') or os.environ.get('POSTGRES_URL') or os.environ.get('POSTGRES_PRISMA_URL', '')
+    """Try all known Neon/Vercel env var names for the database URL."""
+    url = (os.environ.get('DATABASE_URL')
+           or os.environ.get('POSTGRES_URL')
+           or os.environ.get('NEON_PS_DB_DATABASE_URL')
+           or os.environ.get('NEON_PS_DB_POSTGRES_URL')
+           or os.environ.get('POSTGRES_PRISMA_URL', ''))
     # Vercel Neon sets postgres:// but psycopg2 needs postgresql://
     if url.startswith('postgres://'):
         url = url.replace('postgres://', 'postgresql://', 1)
